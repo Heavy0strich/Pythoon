@@ -1,0 +1,32 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Fri Sep 17 06:26:24 2021
+
+@author: aman
+"""
+
+def stock_list(listOfArt, listOfCat):
+    if listOfArt == [] or listOfCat == []:
+        return ""
+    dic = {}
+    for j in listOfCat:
+        TOTAL = 0
+        for i in listOfArt:
+            [a,b] = i.split(" ")
+            if a[0:1] == j:
+                TOTAL = TOTAL + int(b)
+        dic[j] = TOTAL
+    count = 0
+    text = ""
+    for m in dic.keys():
+        if count < len(dic.keys()) - 1:
+            text = text + "(" + str(m) + " : " + str(dic[m]) + ") - "
+            count += 1
+        else:
+             text = text + "(" + str(m) + " : " + str(dic[m]) + ")"
+
+    return text
+b = ["ABAR 200", "CDXE 500", "BKWR 250", "BTSQ 890", "DRTY 600"]
+c = ["A", "B", "C", "T"]
+print(stock_list(b, c))
